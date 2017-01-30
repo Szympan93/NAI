@@ -25,6 +25,18 @@ namespace Pathfinding
         public Map(int w, int h)
         {
             _tiles = new Tile[w+2,h+2];
+
+            // stworzenie niechodliwej ramki
+            for (int i = 0; i < w + 2; i++)
+            {
+                _tiles[i, 0] = new Tile(0, false);
+                _tiles[i, h + 1] = new Tile(0, false);
+            }
+            for (int i = 0; i < h + 2; i++)
+            {
+                _tiles[0, i] = new Tile(0, false);
+                _tiles[w + 1, i] = new Tile(0, false);
+            }
         }
     }
 }
