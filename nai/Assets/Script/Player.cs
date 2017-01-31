@@ -40,7 +40,6 @@ public class Player : MonoBehaviour
             {
                 _board = GetComponentInParent<Board>();
                 _offset = new Vector3(Board.Map.W / 2f, 0, Board.Map.H / 2f);
-                Debug.Log(_offset);
             }
             return _board;
         }

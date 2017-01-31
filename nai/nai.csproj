@@ -77,6 +77,7 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Board.cs" />
     <Compile Include="Assets\Script\Field.cs" />
+    <Compile Include="Assets\Script\Pathfinding\Direction.cs" />
     <Compile Include="Assets\Script\Pathfinding\Map.cs" />
     <Compile Include="Assets\Script\Pathfinding\Node.cs" />
     <Compile Include="Assets\Script\Pathfinding\NodeState.cs" />

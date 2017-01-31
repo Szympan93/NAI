@@ -109,23 +109,60 @@ namespace Pathfinding
 
                 if (cNode.X == dx && cNode.Y == dy) return cNode;
 
+                Direction dir = Direction.None;
+                
                 Node tNode = _addNode(cNode.X + 1, cNode.Y, 1, ref cNode, ref nodes);
-                if (tNode != null) openNodes.Add(tNode);
+                if (tNode != null)
+                {
+                    openNodes.Add(tNode);
+                }
+                else if (_tiles[cNode.X + 1, cNode.Y].Walkable == false)
+                {
+                    dir |= Direction.Right;
+                }
                 tNode = _addNode(cNode.X - 1, cNode.Y, 1, ref cNode, ref nodes);
-                if (tNode != null) openNodes.Add(tNode);
+                if (tNode != null)
+                {
+                    openNodes.Add(tNode);
+                }
+                else if (_tiles[cNode.X - 1, cNode.Y].Walkable == false)
+                {
+                    dir |= Direction.Left;
+                }
                 tNode = _addNode(cNode.X, cNode.Y + 1, 1, ref cNode, ref nodes);
-                if (tNode != null) openNodes.Add(tNode);
+                if (tNode != null)
+                {
+                    openNodes.Add(tNode);
+                }
+                else if (_tiles[cNode.X, cNode.Y + 1].Walkable == false)
+                {
+                    dir |= Direction.Up;
+                }
                 tNode = _addNode(cNode.X, cNode.Y - 1, 1, ref cNode, ref nodes);
-                if (tNode != null) openNodes.Add(tNode);
-
+                if (tNode != null)
+                {
+                    openNodes.Add(tNode);
+                }
+                else if(_tiles[cNode.X, cNode.Y - 1].Walkable == false)
+                {
+                    dir |= Direction.Down;
+                }
+                
                 tNode = _addNode(cNode.X + 1, cNode.Y + 1, Sqrt2, ref cNode, ref nodes);
-                if (tNode != null) openNodes.Add(tNode);
+                Direction limit = Direction.Right | Direction.Up;
+                if (tNode != null && (dir & limit) != limit) openNodes.Add(tNode);
+
                 tNode = _addNode(cNode.X - 1, cNode.Y - 1, Sqrt2, ref cNode, ref nodes);
-                if (tNode != null) openNodes.Add(tNode);
+                limit = Direction.Left | Direction.Down;
+                if (tNode != null && (dir & limit) != limit) openNodes.Add(tNode);
+
                 tNode = _addNode(cNode.X - 1, cNode.Y + 1, Sqrt2, ref cNode, ref nodes);
-                if (tNode != null) openNodes.Add(tNode);
+                limit = Direction.Left | Direction.Up;
+                if (tNode != null && (dir & limit) != limit) openNodes.Add(tNode);
+
                 tNode = _addNode(cNode.X + 1, cNode.Y - 1, Sqrt2, ref cNode, ref nodes);
-                if (tNode != null) openNodes.Add(tNode);
+                limit = Direction.Right | Direction.Down;
+                if (tNode != null && (dir & limit) != limit) openNodes.Add(tNode);
             }
             return null;
         }

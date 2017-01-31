@@ -39,7 +39,6 @@ public class Board : MonoBehaviour
                 Fields[x, y] = field;
                 if (MapTex.GetPixel(x, y).b < 0.55f && MapTex.GetPixel(x, y).b > 0.45f)
                 {
-                    Debug.Log("creating player");
                     Player = Instantiate(PlayerPrefab.gameObject, new Vector3(x - Map.W / 2f, 0, y - Map.H / 2f), Quaternion.identity, transform).GetComponent<Player>();
                 }
             }
