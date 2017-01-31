@@ -6,8 +6,6 @@ namespace Pathfinding
 {
     public class Tile
     {
-        public int X;
-        public int Y;
         public float Cost;
         public bool Walkable;
 
@@ -17,4 +15,5 @@ namespace Pathfinding
             Walkable = walkable;
         }
     }
+
 }
