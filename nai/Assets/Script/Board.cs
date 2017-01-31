@@ -8,12 +8,15 @@ public class Board : MonoBehaviour
     public Texture2D MapTex;
     public Vector2 CostRange;
     public Field FieldPrefab;
-
+    public Player PlayerPrefab;
     public Pathfinding.Map Map;
+    public Player Player;
+    public Field[,] Fields; 
 
     void Awake()
     {
         Map = new Map(MapTex.width, MapTex.height);
+        Fields = new Field[Map.W,Map.H];
         for (int x = 0; x < Map.W; x++)
         {
             for (int y = 0; y < Map.H; y++)
@@ -33,6 +36,12 @@ public class Board : MonoBehaviour
                 field.X = x;
                 field.Y = y;
                 field.Tile = tile;
+                Fields[x, y] = field;
+                if (MapTex.GetPixel(x, y).b < 0.55f && MapTex.GetPixel(x, y).b > 0.45f)
+                {
+                    Debug.Log("creating player");
+                    Player = Instantiate(PlayerPrefab.gameObject, new Vector3(x - Map.W / 2f, 0, y - Map.H / 2f), Quaternion.identity, transform).GetComponent<Player>();
+                }
             }
         }
     }

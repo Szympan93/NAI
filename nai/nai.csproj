@@ -81,6 +81,7 @@
     <Compile Include="Assets\Script\Pathfinding\Node.cs" />
     <Compile Include="Assets\Script\Pathfinding\NodeState.cs" />
     <Compile Include="Assets\Script\Pathfinding\Tile.cs" />
+    <Compile Include="Assets\Script\Player.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

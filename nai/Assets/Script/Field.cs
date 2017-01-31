@@ -61,6 +61,7 @@ public class Field : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        
+        Debug.Log(Board.Player.Y);
+        Board.Player.Path = Board.Map.FindPath(Board.Player.X, Board.Player.Y, X, Y);
     }
 }
